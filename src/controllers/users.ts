@@ -5,9 +5,6 @@ export const getUsersController = {
     get: async (req: Request, res: Response) => {
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query('SELECT * FROM users');
             //console.log(result.rows);
             res.status(200).json(result.rows);
@@ -24,11 +21,9 @@ export const postUsersController = {
         const { first_name, password, email } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
+            
             const result = await query("INSERT INTO users (first_name, password, email) VALUES ($1, $2, $3) RETURNING *", [first_name, password, email])
-            //console.log(result.rows);
+
             res.status(200).json({msg: 'User added successfully' });
         } catch (error) {
             res.status(404).json({msg: error});
