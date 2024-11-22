@@ -37,15 +37,11 @@ export const postBreweriesController = {
 
 export const putBreweriesController = {
     put: async (req: Request, res: Response) => {
-
-        const { name, city, country, description, url_website, id_brewery } = req.body
+        const id_brewery = parseInt(req.params.id)
+        const { name, city, country, description, url_website } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
-            const result = await query("UPDATE beers SET name = $1, city = $2, country = $3, description = $4, url_website = $5 WHERE id_brewery = $6", [name, city, country, description, url_website, id_brewery])
-            //console.log(result.rows);
+            const result = await query("UPDATE breweries SET name = $1, city = $2, country = $3, description = $4, url_website = $5 WHERE id_brewery = $6", [name, city, country, description, url_website, id_brewery])
             res.status(200).json({msg: 'Brewery modified successfully' });
         } catch (error) {
             res.status(404).json({msg: error});

@@ -9,6 +9,6 @@ import { getDetailsBeersController } from "../controllers/beers";
 
 router.get('/', getBeersController.get);
 router.post('/', postBeersController.post);
-router.put('/', putBeersController.put);
+router.put('/:id', putBeersController.put);
 router.delete('/:id', deleteBeersController.delete);
 router.get('/:id', getDetailsBeersController.get);

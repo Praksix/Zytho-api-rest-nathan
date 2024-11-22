@@ -9,7 +9,7 @@ import { getDetailsUsersController } from "../controllers/users";
 
 router.get('/', getUsersController.get);
 router.post('/', postUsersController.post);
-router.put('/', putUsersController.put);
+router.put('/:id', putUsersController.put);
 router.delete('/:id', deleteUsersController.delete);
 router.get('/:id', getDetailsUsersController.get);
 

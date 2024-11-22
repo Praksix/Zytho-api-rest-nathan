@@ -37,15 +37,12 @@ export const postBeersController = {
 
 export const putBeersController = {
     put: async (req: Request, res: Response) => {
-
-        const {  name, description, abv, type, color, price, id_beer } = req.body
+        const id_beer = parseInt(req.params.id)
+        const {  name, description, abv, type, color, price } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
-            const result = await query("UPDATE beers SET name = $1, description = $2, abv = $3, type = $4, color = $5, price = $6 WHERE id_beer = $6", [name, description, abv, type, color, price, id_beer])
-            //console.log(result.rows);
+            const result = await query("UPDATE beers SET name = $1, description = $2, abv = $3, type = $4, color = $5, price = $6 WHERE id_beer = $7", [name, description, abv, type, color, price, id_beer])
+
             res.status(200).json({msg: 'Beers modified successfully' });
         } catch (error) {
             res.status(404).json({msg: error});

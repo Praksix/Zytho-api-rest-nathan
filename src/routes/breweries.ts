@@ -9,6 +9,6 @@ import { getDetailsBreweriesController } from "../controllers/breweries";
 
 router.get('/', getBreweriesController.get);
 router.post('/', postBreweriesController.post);
-router.put('/', putBreweriesController.put);
+router.put('/:id', putBreweriesController.put);
 router.delete('/:id', deleteBreweriesController.delete);
 router.get('/:id', getDetailsBreweriesController.get);

@@ -32,15 +32,14 @@ export const postUsersController = {
 
 export const putUsersController = {
     put: async (req: Request, res: Response) => {
-
-        const { id_user, first_name, password, email } = req.body
+        const id_user = parseInt(req.params.id)
+        const { first_name, password, email } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
-            const result = await query("UPDATE users SET first_name = $1, password = $2, email = $3 WHERE id_user = $4", [first_name, password, email, id_user])
-            //console.log(result.rows);
+
+            const result = await query(
+                "UPDATE users SET first_name = $1, password = $2, email = $3 WHERE id_user = $4 RETURNING *",
+                [first_name, password, email, id_user] );
             res.status(200).json({msg: 'User modified successfully' });
         } catch (error) {
             res.status(404).json({msg: error});
