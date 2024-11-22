@@ -2,9 +2,13 @@ import { Router } from "express";
 export const router = Router();
 
 import { getBeersController } from "../controllers/beers";
+import { postBeersController } from "../controllers/beers";
+import { putBeersController } from "../controllers/beers";
+import { deleteBeersController } from "../controllers/beers";
+import { getDetailsBeersController } from "../controllers/beers";
 
 router.get('/', getBeersController.get);
-router.post('/', getBeersController.post);
-router.put('/', getBeersController.put);
-router.delete('/', getBeersController.delete);
-
+router.post('/', postBeersController.post);
+router.put('/', putBeersController.put);
+router.delete('/:id', deleteBeersController.delete);
+router.get('/:id', getDetailsBeersController.get);
