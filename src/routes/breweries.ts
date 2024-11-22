@@ -1,32 +1,14 @@
 import { Router } from "express";
 export const router = Router();
 
+import { getBreweriesController } from "../controllers/breweries";
+import { postBreweriesController } from "../controllers/breweries";
+import { putBreweriesController } from "../controllers/breweries";
+import { deleteBreweriesController } from "../controllers/breweries";
+import { getDetailsBreweriesController } from "../controllers/breweries";
 
-router.get('/', (req, res)=>{
-    res.json({message : "message d'accueil"});
-});
-
-router.post('/', (req, res)=>{
-    res.json({message :"ajouter une brasserie"});
-});
-
-router.put('/', (req, res)=>{
-    res.json({message :"modifier une brasserie"});
-});
-
-router.delete('/', (req, res)=>{
-
-    //récupérer l'id de la brasserie aà supprimer
-
-    try {
-        //code sql pour supprimer la brasserie
-        //connexion à la bdd
-        //on va executer la requete sql pour la suppression
-        res.send('bien supprimé');
-
-    } catch (error) {
-    //et si tout c'est bien passé on affiche msg confimration
-    // sinon message d'erreur
-    res.send('erreur');
-    }
-});
+router.get('/', getBreweriesController.get);
+router.post('/', postBreweriesController.post);
+router.put('/', putBreweriesController.put);
+router.delete('/:id', deleteBreweriesController.delete);
+router.get('/:id', getDetailsBreweriesController.get);
