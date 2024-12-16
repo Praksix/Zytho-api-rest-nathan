@@ -1,6 +1,8 @@
 import { request, Request, Response } from "express";
 import { query } from '../database';
 
+
+
 export const getUsersController = {
     get: async (req: Request, res: Response) => {
 
@@ -30,6 +32,7 @@ export const postUsersController = {
         }
 }};
 
+
 export const putUsersController = {
     put: async (req: Request, res: Response) => {
         const id_user = parseInt(req.params.id)
@@ -47,6 +50,7 @@ export const putUsersController = {
 }};
 
 
+
 export const deleteUsersController = {
     delete: async (req: Request, res: Response) =>{
 
@@ -59,7 +63,6 @@ export const deleteUsersController = {
             res.status(404).json({msg: error, msg2: "ça bug sa mère"});
         }
 }};
-
 
 
 export const getDetailsUsersController = {
