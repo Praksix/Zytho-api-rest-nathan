@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   db:
     image: postgres
@@ -6,10 +8,17 @@ services:
       POSTGRES_USER: admin
       POSTGRES_DB: bdd
     ports:
-      - 5433:5432
+      - "5433:5432"
     volumes:
       - PostgreSQLdb:/var/lib/postgresql/data
       - ./db-scripts:/docker-entrypoint-initdb.d/
 
-volumes:
-  PostgreSQLdb:
+  api:
+    build: .
+    ports:
+      - "3004:3004"
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
