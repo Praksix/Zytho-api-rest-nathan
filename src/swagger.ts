@@ -6,7 +6,7 @@ const options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Beer Dictionary API",
+            title: "Beers Dictionary API",
             version: "1.0.0",
             description: "API - Référencement des bières artisanales et de leurs brasseries.",
         },
