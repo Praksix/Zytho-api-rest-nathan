@@ -5,11 +5,7 @@ export const getBreweriesController = {
     get: async (req: Request, res: Response) => {
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query('SELECT * FROM breweries');
-            //console.log(result.rows);
             res.status(200).json(result.rows);
         } catch (error) {
             res.status(404).json({msg: error});
@@ -24,11 +20,7 @@ export const postBreweriesController = {
         const { name, city, country, description, url_website } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query("INSERT INTO beers (name, city, country, description, url_website) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, city, country, description, url_website])
-            //console.log(result.rows);
             res.status(200).json({msg: 'Brewery added successfully' });
         } catch (error) {
             res.status(404).json({msg: error});
@@ -68,11 +60,7 @@ export const getDetailsBreweriesController = {
     get: async (req: Request, res: Response) => {
         const id_brewery = parseInt(req.params.id)
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query('SELECT * FROM breweries WHERE id_brewery = $1', [id_brewery]);
-            //console.log(result.rows);
             res.status(200).json(result.rows);
         } catch (error) {
             res.status(404).json({msg: error});

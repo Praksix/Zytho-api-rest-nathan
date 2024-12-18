@@ -5,11 +5,7 @@ export const getBeersController = {
     get: async (req: Request, res: Response) => {
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query('SELECT * FROM beers');
-            //console.log(result.rows);
             res.status(200).json(result.rows);
         } catch (error) {
             res.status(404).json({msg: error});
@@ -24,11 +20,7 @@ export const postBeersController = {
         const { name, description, abv, type, color, price } = req.body
 
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query("INSERT INTO beers (name, description, abv, type, color, price) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, description, abv, type, color, price])
-            //console.log(result.rows);
             res.status(200).json({msg: 'Beers added successfully' });
         } catch (error) {
             res.status(404).json({msg: error});

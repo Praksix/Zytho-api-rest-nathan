@@ -8,7 +8,6 @@ export const getUsersController = {
 
         try {
             const result = await query('SELECT * FROM users');
-            //console.log(result.rows);
             res.status(200).json(result.rows);
         } catch (error) {
             res.status(404).json({msg: error});
@@ -69,11 +68,7 @@ export const getDetailsUsersController = {
     get: async (req: Request, res: Response) => {
         const id_user = parseInt(req.params.id)
         try {
-            // récupérer la co de la bdd
-            //const data = select * from beers
-            //const data =[];
             const result = await query('SELECT * FROM users WHERE id_user = $1', [id_user]);
-            //console.log(result.rows);
             res.status(200).json(result.rows);
         } catch (error) {
             res.status(404).json({msg: error});
