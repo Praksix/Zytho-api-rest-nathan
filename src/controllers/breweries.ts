@@ -20,7 +20,7 @@ export const postBreweriesController = {
         const { name, city, country, description, url_website } = req.body
 
         try {
-            const result = await query("INSERT INTO beers (name, city, country, description, url_website) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, city, country, description, url_website])
+            const result = await query("INSERT INTO breweries (name, city, country, description, url_website) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, city, country, description, url_website])
             res.status(200).json({msg: 'Brewery added successfully' });
         } catch (error) {
             res.status(404).json({msg: error});
