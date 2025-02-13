@@ -6,6 +6,7 @@ import { postBeersController } from "../controllers/beers";
 import { putBeersController } from "../controllers/beers";
 import { deleteBeersController } from "../controllers/beers";
 import { getDetailsBeersController } from "../controllers/beers";
+import { getBeersForBreweryController } from "../controllers/beers";
 
 
 
@@ -165,3 +166,6 @@ router.delete('/:id', deleteBeersController.delete);
  *         description: Beer not found.
  */
 router.get('/:id', getDetailsBeersController.get);
+
+
+router.get('/brewery/:id', getBeersForBreweryController.get);

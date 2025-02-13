@@ -61,7 +61,7 @@ export const getDetailsBreweriesController = {
         const id_brewery = parseInt(req.params.id)
         try {
             const result = await query('SELECT * FROM breweries WHERE id_brewery = $1', [id_brewery]);
-            res.status(200).json(result.rows);
+            res.status(200).json(result.rows[0]);
         } catch (error) {
             res.status(404).json({msg: error});
         }

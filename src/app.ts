@@ -1,7 +1,11 @@
 import express, { Application } from "express";
 const app: Application = express();
-import { setupSwagger } from "./swagger";
+import cors from "cors";
+app.use(cors({
+    origin: 'http://localhost:5173', // Frontend URL
+}));
 
+import { setupSwagger } from "./swagger";
 
 const version = "v1";
 const path = `/api/${version}`;

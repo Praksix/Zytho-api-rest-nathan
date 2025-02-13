@@ -25,11 +25,16 @@ CREATE TABLE beers
     color varchar(100),
     price decimal(4,2) NOT NULL,
     id_brewery int,
-    CONSTRAINT fk_id_beer_brewery FOREIGN KEY (id_brewery)
-    REFERENCES breweries(id_brewery),
+   /* CONSTRAINT fk_id_beer_brewery */
+    FOREIGN KEY (id_brewery)
+    REFERENCES breweries(id_brewery)
+    ON DELETE CASCADE,
     id_category int,
-    CONSTRAINT fk_id_beer_category FOREIGN KEY (id_category)
+    /*CONSTRAINT fk_id_beer_category */
+    FOREIGN KEY (id_category)
     REFERENCES categories(id_category)
+    ON DELETE CASCADE,
+    liked boolean DEFAULT false
 );
 
 CREATE TABLE images
@@ -40,6 +45,7 @@ CREATE TABLE images
     id_beer int,
     CONSTRAINT fk_id_image_beer FOREIGN KEY (id_beer)
     REFERENCES beers(id_beer)
+    ON DELETE CASCADE
 );
 
 
@@ -59,10 +65,12 @@ CREATE TABLE beer_ingredients
     id_beer_ingredients SERIAL PRIMARY KEY,
     id_beer INT NOT NULL,
     CONSTRAINT fk_id_beer_ingredient FOREIGN KEY (id_beer)
-    REFERENCES beers(id_beer),
+    REFERENCES beers(id_beer)
+    ON DELETE CASCADE,
     id_ingredient INT NOT NULL,
     CONSTRAINT fk_id_ingredient_beer FOREIGN KEY (id_ingredient)
     REFERENCES ingredients(id_ingredient)
+    ON DELETE CASCADE
 );
 
 
@@ -83,10 +91,12 @@ CREATE TABLE favorites
     id_favorite SERIAL PRIMARY KEY,
     id_user int NOT NULL,
     CONSTRAINT fk_id_fav_user FOREIGN KEY (id_user)
-    REFERENCES users(id_user),
+    REFERENCES users(id_user)
+    ON DELETE CASCADE,
     id_beer int NOT NULL,
     CONSTRAINT fk_id_fav_beer FOREIGN KEY (id_beer)
     REFERENCES beers(id_beer)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE reviews
@@ -96,8 +106,10 @@ CREATE TABLE reviews
     rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
     id_user int,
     CONSTRAINT fk_id_review_user FOREIGN KEY (id_user)
-    REFERENCES users(id_user),
+    REFERENCES users(id_user)
+    ON DELETE CASCADE,
     id_beer int,
     CONSTRAINT fk_id_review_beer FOREIGN KEY (id_beer)
     REFERENCES beers(id_beer)
+    ON DELETE CASCADE
 );

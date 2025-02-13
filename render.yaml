@@ -1,0 +1,12 @@
+databases:
+- name: bdd-zytho
+  databaseName: bdd_zytho
+  user: bdd_zytho_user
+  plan: free
+  region: frankfurt
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+version: "1"
+
