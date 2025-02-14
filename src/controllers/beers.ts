@@ -7,8 +7,10 @@ export const getBeersController = {
         try {
             const result = await query('SELECT * FROM beers');
             res.status(200).json(result.rows);
+            //res.status(200).json({msg: 'Beers retrieved successfully'});
         } catch (error) {
             res.status(404).json({msg: error});
+            //res.status(200).json({msg: 'Beers retrieved successfully'});
         }
 }};
 

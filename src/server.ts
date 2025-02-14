@@ -1,6 +1,6 @@
 import app from "./app";
 
-const PORT = 3004;
+const PORT = 3006;
 
 import cors from "cors";
 app.use(cors({

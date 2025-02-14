@@ -6,7 +6,7 @@ const pool = new Pool({
   // database: 'bdd',   // Nom de la base
   // password: 'admin', // Mot de passe PostgreSQL
   // port: 5432                // Port par défaut de PostgreSQL
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL
 });
 
 export const query = (text: string, params?: any[]) => {
